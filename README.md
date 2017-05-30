@@ -3,7 +3,7 @@
 ## Hoja de Ruta
 
 1) Repasamos el concepto de Componente
-2) hola
+2) Data Binding e Interpolación
 3) hola
 4) hola
 
@@ -70,10 +70,6 @@ Algunos otros tips:
 
 - Los métodos vienen luego de las properties, también en camelcase lower primer letra.
 
-Para redondear la clase de los componentes, este ejemplo es interesante:
-
-https://plnkr.co/edit/aoTR5E9OElPsTT9s9OIJ?p=info 
-
 ### El Template y la Metadata de un componente
 
 Sin embargo, como ya sabemos, las clases de los componentes no son lo único necesario que precisamos para armar nuestra app en angular, precisamos darle el HTML, la vista, la UI. Todo eso y ms lo definimos a través del **metadata** del componente.
@@ -102,11 +98,53 @@ Especifica el nombre de la directiva que vamos a usar con el componente. Es simp
 
 4) **providers**: es un array de objeto de los providers de los servicios que el componente requiere para operar. Estos se inyectan a partir de inyección de dependencias; es simplemente una forma de decirle a Angular que el constructor del componente requiere algúns servicio para funcionar. Ejemplo:
 
-### Data Binding
+IMAGEN angular-component-code-sample.png
 
-Las llaves dobles (interpolación), indican un data binding,  indica que estamos asignando a es porción de la UI que mire el valor de la property pageTitle de la Clase.
+### Cerrando con componentes
+
+Para redondear los componentes, es interesante ver este ejemplo:
+
+https://plnkr.co/edit/aoTR5E9OElPsTT9s9OIJ?p=info 
+
+Recordemos que en Plunker podemos editar código online sin tener que tener instalado nada. Nos permite probar la tecnología de forma muy simple.
+
+## Data Binding e Interpolación
+
+Como mencionamos anteriormente, queremos que cada componente tenga asociada una cierta vista (HTML), sin embargo, queremos que los datos que se muestran en la misma sean dinámicos, y que vengan desde las properties de la clase del componente. No queremos hardcodear el HTML que representa los datos a mostrar. Por ejemplo:
+
+No queremos:
+
+```html
+<div class='panel-heading'>
+    Nombre de la página que puede cambiar
+</div>
+```
+
+Queremos:
+
+```html
+<div class='panel-heading'>
+    {{pageTitle}}
+</div>
+```
+
+```typescript
+export class MyComponent {
+  pageTitle: string = "Nombre de la página que puede cambiar"
+  constructor(pageTitle : string)
+  {
+    this.pageTitle = pageTitle;
+  }
+}
+```
+
+Lo que se ve en el código anterior es el concepto de **Data Binding**, es decir, "el enlace" existente entre una porción de UI y ciertos datos de una clase de un componente. En otras palabras, estamos diciendole a la UI que mire el valor de la property ```pageTitle``` de la clase. Si dicha property cambia, entonces el valor mostrado por la UI cambia.
  
 De manera que cuando el HTML se renderiza, el HTML muestra el valor asociado al modelo pageTitle.
+
+El Data Binding va de la mano del concepto de **interpolación**, la cual es la habilidad de poner datos dentro de un HTML (interpolar). Esto es lo que logramos con las llaves dobles ``` {{ ... }} ```.
+
+IMAGEN angular-data-binding
 
 Importando: antes de usar una función o clase externa, tenemos que decirle al module de dónde lo puede sacar. Eso lo hacemos con el statement import. Este statemente es parte de ES2015 y es implementado en TypeScript, funcionando como el import de java o el using de c#.
 
