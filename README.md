@@ -9,6 +9,8 @@
 
 ## Repasamos el concepto de Componente
 
+*** Fundamentos de los componentes
+
 Cada componente la idea es que funcione armoniosamente y en conjunto con el resto para proveer una experiencia de usuario única. Como dijimos, estos son modulares, resuelven un problema concreto y colaboran entre sí para lograr ir armando la interfaz de usuario como un puzzle donde cada pieza tiene sus diferentes responsabilidades.
 
 Por ejemplo, una excelente forma de pensar los componentes es a través de la siguiente imagen:
@@ -17,29 +19,72 @@ IMAGEN COMPONENTES
 
 A su vez, es interesante recordar cómo se comporta internamente cada componente. Como habíamos dicho, los componentes se componen de tres cosas:
 
-1) El **template** del componente, el cual define la estructura (HTML o la vista) del mismo. Se crea con código html y define lo que se rednderizará en a página. A su vez incluye *bindings* y *directivas* para darle poder a nuestra vista y hacerla dinámica. Estos dos conceptos los veremos más adelante en este módulo
+1) **Template:** El **template** del componente, el cual define la estructura (HTML o la vista) del mismo. Se crea con código html y define lo que se rednderizará en a página. A su vez incluye *bindings* y *directivas* para darle poder a nuestra vista y hacerla dinámica. Estos dos conceptos los veremos más adelante en este módulo
 
-2) A su vez la view tiene un código asociado, el cual llamamos la **clase** de un componente. Esta representa el código asociado a la vista (creada con TypeScript), la cual posee los *datos*, llamadas las *properties* para que la vista los use (el nombre de una mascota por ejemplo), y a su vez posee la *lógica/funciones* que usan los mismos. Por ejemplo: la lógica para mostrar o esconder una imagen, la lógica para traer datos desde una Api, etc.
+2) **Clase:** A su vez la view tiene un código asociado, el cual llamamos la **clase** de un componente. Esta representa el código asociado a la vista (creada con TypeScript), la cual posee los *datos*, llamadas las *properties* para que la vista los use (el nombre de una mascota por ejemplo), y a su vez posee la *lógica/funciones* que usan los mismos. Por ejemplo: la lógica para mostrar o esconder una imagen, la lógica para traer datos desde una Api, etc.
 
-3) Finalmente, el componente también tiene *metadata*, que es información adicional para Angular, siendo esta definida con un *decorator* (los que arrancan con **@**). Un decorador es una función que agrega metadata a una clase, sus miembros o los argumentos de sus métodos.
+3) **Metadata:** Finalmente, el componente también tiene **metadata**, que es información adicional para Angular, siendo esta definida con un *decorator* (los que arrancan con **@**). Un decorador es una función que agrega metadata a una clase, sus miembros o los argumentos de sus métodos.
 
 IMAGEN ARQ. COMPONENTE angular_component_architecture
 
-Clase de un componente:
+### La clase de un componente:
 
-La sintaxis es export class NombreComponent {
-  property1: tipo = “”,
+Para la clase de un componente, la sintaxis es como sigue a continuación:
+
+```typescript
+export class NombreComponent {
+  property1: tipo = valor,
+  property2: tipo2 = valor2,
+  property3: tipo2 = valor3
+  ...
+}
+```
+
+Pero a su vez necesitamos utilizar el decorador ```Component```, el cual lo debemos importar desde ```@angular/core```:
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'nombre-component',
+  template: `<h1>Hello {{property1}}</h1>`
+})
+export class NombreComponent {
+  property1: tipo = valor,
+  property2: tipo2 = valor2,
+  property3: tipo2 = valor3
+  ...
 }
 
-Recordemos que por convención, el componente fundamental de una app de angular se llama AppComponent (el root component).
+```
 
-La palabra reservada “export” simplemente hace que el componente se exporte y pueda ser visto por otros componentes de nuestra app.
+Recordemos que el decorator ```@Component``` indica que la clase subyacente es un Componente de Angular y recibe la metadata del mismo (en forma de un objeto JSON de configuración). Aquí van algunas de las opciones de configuración más útiles para ```@Component```:
 
-La sintaxis de definición del archivo es nombre.component.ts
+1) **selector**: Es un selector de CSS que le dice a Angular que cree e inserte una instancia de este componente en donde encuentre  un tag  ```<nombre-component>``` en su HTML padre. Por ejemplo,si el HTML  de una app contiene contains ```<nombre-component></nombre-component>```, entonces Angular inserta una instancia de la view asociada a ```NombreComponent``` entre esos dos tags.
 
-El default value en la property es opcional.
+2) **template**: Representa el código HTML asociado al componente y que debe ser mostrado cada vez que se use su selector.
 
-Los métodos vienen luego de las properties, también en camelcase lower primer letra.
+3) **templateUrl**: Similar al anterior pero permite referenciar a un documento HTML en lugar de tener que escribirlo directamente en el código del componente (puedo ponerlo en un archivo separado y tratarlo simplemente como un HTML.
+
+4) **providers**: es un array de objeto de los providers de los servicios que el componente requiere para operar. Estos se inyectan a partir de inyección de dependencias; es simplemente una forma de decirle a Angular que el constructor del componente requiere algúns servicio para funcionar. Ejemplo:
+
+Algunos otros tips:
+
+- Recordemos que por convención, el componente fundamental de una app de angular se llama AppComponent (el root component).
+
+- La palabra reservada “export” simplemente hace que el componente se exporte y pueda ser visto por otros componentes de nuestra app.
+
+- La sintaxis de definición del archivo es nombre.component.ts
+
+- El valor por defecto en las properties de nuestros componentes es opcional.
+
+- Los métodos vienen luego de las properties, también en camelcase lower primer letra.
+
+Para redondear la clase de los componentes, este ejemplo es interesante:
+
+https://plnkr.co/edit/aoTR5E9OElPsTT9s9OIJ?p=info 
+
+
 
 Sin embargo los componentes no son lo único necesario que precisamos para armar nuestra app en angular, precisamos darle el html, la vista, etc.
 
