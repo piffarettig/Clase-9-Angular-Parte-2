@@ -295,10 +295,12 @@ Y en el ```index.html``` agregamos:
 
 De manera que nos quedaría algo así:
 
+```
 -> node_modules
 -> src
-  -> app
-    -> pets
+   -> app
+      -> pets    
+```
     
 ### 3. Agregamos el html.
 
