@@ -268,23 +268,21 @@ El --save lo que hace es guardar la referencia a este módulo en el package.json
 Vemos como se impacta el package.json
 
 ```json
-
-"dependencies": {
-  "@angular/common": "~4.0.0",
-  "@angular/compiler": "~4.0.0",
-  "@angular/core": "~4.0.0",
-  "@angular/forms": "~4.0.0",
-  "@angular/http": "~4.0.0",
-  "@angular/platform-browser": "~4.0.0",
-  "@angular/platform-browser-dynamic": "~4.0.0",
-  "@angular/router": "~4.0.0",
-  "angular-in-memory-web-api": "~0.3.0",
-  "bootstrap": "^3.3.7", // aquí apareció bootstrap
-  "core-js": "^2.4.1",
-  "bootstrap": "^3.3.7",
-  "rxjs": "5.0.1",
-  "systemjs": "0.19.40",
-  "zone.js": "^0.8.4"
+  "dependencies": {
+    "@angular/common": "~4.0.0",
+    "@angular/compiler": "~4.0.0",
+    "@angular/core": "~4.0.0",
+    "@angular/forms": "~4.0.0",
+    "@angular/http": "~4.0.0",
+    "@angular/platform-browser": "~4.0.0",
+    "@angular/platform-browser-dynamic": "~4.0.0",
+    "@angular/router": "~4.0.0",
+    "angular-in-memory-web-api": "~0.3.0",
+    "bootstrap": "^3.3.7", //aca aparecio bootsrap
+    "core-js": "^2.4.1",
+    "rxjs": "5.0.1",
+    "systemjs": "0.19.40",
+    "zone.js": "^0.8.4"
   },
 ```
 
