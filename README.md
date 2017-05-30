@@ -382,7 +382,7 @@ export class PetListComponent {
 }
 ```
 
-5. Agregamos el componente nuevo a través de su selector.
+### 5. Agregamos el componente nuevo a través de su selector.
 
 Lo que haremos aquí es usar el selector ```pm-pets``` en el root component, es decir el AppComponent.
 
@@ -424,31 +424,98 @@ import { PetListComponent }  from './pets/pet-list.component'; //acá importamos
 
 @NgModule({
   imports:      [ BrowserModule ],
-  declarations: [ AppComponent, PetListComponent], //aca se lo 
+  declarations: [ AppComponent, PetListComponent], //aca se lo inyectamos al AppModule
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
 
 ```
 
-¿Como hace el componente para saber a dónde buscar el component? Cómo ya dijimos, ahora lo encuentra porque pertenecen al mismo modulo. El módulo que sea dueño de este component es examinado para encontrar todas las directivas que pertenecen al mismo. 
+¿Como hace el componente para saber a dónde buscar el component? Cómo ya dijimos, ahora lo encuentra porque pertenecen al mismo modulo. El módulo que sea dueño de este component es examinado para encontrar todas las directivas que pertenecen al mismo.
 
-
-Angular nos da lo que se llama Data Binding, de la forma en la que podemos de forma sencilla poner lógica en nuestro html, como ifs o for loops, 
-
-Binding:
+### 5. Usando Data Binding para mostrar datos dinmicos
 
 Tenemos una pequeña tabla que muestra cosas, pero todavía no tiene ningún tipo de interacción, por lo que comenzaremos a explorar más a fondo las features del data binding que nos permiten manejar eventos y user input.
 
-Ahora lo que queremos es ver poner contenido dinámico en nuestro componente. Para ello, veremos el concepto de binding. Binding es el mecanismo que tiene angular para coordinar los datos que existen en la clase de nuestro componente con su template, es decir en cómo se pasan los datos entre uno y otro.
+Ahora lo que queremos es ver poner contenido dinámico en nuestro componente. Para ello, repasemos el concepto de **Binding**. Este es el mecanismo que tiene Angular para coordinar los datos que existen en la clase de nuestro componente con su template, es decir en cómo se pasan los datos entre uno y otro.
 
-La sintaxis del binding siempre se define en el template, a partir de algo que se llama interpolación
+La sintaxis del binding siempre se define en el template, a partir de lo que ya sabemos que se llama **interpolación**
 
 IMAGEN Interpolación
 
 La interpolación soporta mucho más que el mostrado properties simples, también permite realizar operaciones complejas o cálculos, o llamar métodos!
 
-Hacer cambio en el html y poner 
+Hacer cambio en el  ```pet-list.component.html``` y poner:
 
-{{pageTitle}}
+```
+ <div class='panel-heading'>
+     {{pageTitle}}
+ </div>
+```
+Veamos que pasa.
 
+IMAGEN TABLA
+
+### 6. Utilizando *ngFor para iterar sobre elementos de forma dinámica
+
+En nuestro component:
+
+```typescript
+
+import { Component } from '@angular/core';
+
+@Component({
+    selector: 'pm-pets',
+    templateUrl: 'app/pets/pet-list.component.html'
+})
+export class PetListComponent {
+    pageTitle: string = "Pet List";
+    pets: Array<Pet> = [
+        new Pet("1","Perro",4,"Grande", new Date(),20,"Golden Retriever", "")
+    ];
+}
+
+class Pet {
+    id: string;
+    name: string;
+    age: number;
+    size: string;
+    birthDate: Date;
+    weight: number;
+    breedName: string;
+    imageBase64: string;
+
+    constructor(id:string, name:string, age:number,size:string,
+    birthDate:Date, weight:number,breedName:string,  imageBase64: string){
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.size = size;
+        this.birthDate = birthDate;
+        this.weight = weight;
+        this.breedName = breedName;
+        this.imageBase64 = imageBase64;
+    }
+}
+
+```
+
+
+Y en el template cambiamos el ```<tbody>``` por lo siguiente:
+
+```html
+
+<tbody>
+  <tr *ngFor='let aPet of pets'>
+      <td></td>
+      <td>{{aPet.id }}</td>
+      <td>{{aPet.name}}</td>
+      <td>{{aPet.age}}</td>
+      <td>{{aPet.size}}</td>
+      <td>{{aPet.birthDate}}</td>
+      <td>{{aPet.weight}}</td>
+      <td>{{aPet.breedName}}</td>
+  </tr>
+</tbody>
+                
+```
