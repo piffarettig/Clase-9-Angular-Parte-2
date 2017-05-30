@@ -600,8 +600,7 @@ Esto que hicimos se llama **Two-Way Binding**.
 
 IMAGEN TWO WAY BINDING
 
-EXPLICAR TWO WAY BINDING!
-
+Two-Way Binding es simplemente un mecanismo a partir del cual podemos establecer un enlace entre nuestros datos (properties), y una expresión en un template; de manera que cada vez que desde la UI se modifique dicho valor, el valor de la property cambia, y viceversa.
 
 ### 7. Usando Pipes en Angular
 
