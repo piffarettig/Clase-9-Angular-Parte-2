@@ -17,7 +17,7 @@ Cada componente la idea es que funcione armoniosamente y en conjunto con el rest
 
 Por ejemplo, una excelente forma de pensar los componentes es a través de la siguiente imagen:
 
-IMAGEN EJEMPLO COMPONENTES
+![imagen](doc-images/angular-components-sample-2.png)
 
 A su vez, es interesante recordar cómo se comporta internamente cada componente. Como habíamos dicho, los componentes se componen de tres cosas:
 
@@ -27,7 +27,7 @@ A su vez, es interesante recordar cómo se comporta internamente cada componente
 
 3) **Metadata:** Finalmente, el componente también tiene **metadata**, que es información adicional para Angular, siendo esta definida con un *decorator* (los que arrancan con **@**). Un decorador es una función que agrega metadata a una clase, sus miembros o los argumentos de sus métodos.
 
-IMAGEN ARQ. COMPONENTE angular_component_architecture
+![imagen](doc-images/angular_component_architecture.png)
 
 ### La clase de un componente:
 
@@ -57,7 +57,6 @@ export class NombreComponent {
   property3: tipo2 = valor3
   ...
 }
-
 ```
 
 También podemos definir un constructor:
@@ -76,7 +75,7 @@ export class NombreComponent {
 
 ```
 
-Algunos otros tips:
+Algunos otros conceptos a tener en cuenta:
 
 - Recordemos que por convención, el componente fundamental de una app de angular se llama AppComponent (el root component).
 
@@ -116,7 +115,7 @@ Especifica el nombre de la directiva que vamos a usar con el componente. Es simp
 
 4) **providers**: es un array de objeto de los providers de los servicios que el componente requiere para operar. Estos se inyectan a partir de inyección de dependencias; es simplemente una forma de decirle a Angular que el constructor del componente requiere algúns servicio para funcionar. Ejemplo:
 
-IMAGEN angular-component-code-sample.png
+![imagen](doc-images/angular-component-code-sample.png)
 
 ### Cerrando con componentes
 
@@ -132,11 +131,11 @@ Antes de usar una función o clase externa, tenemos que decirle al module de dó
 
 En consecuencia, nos permite usar todos los miembros que hayan sido exportados por algún ES Module (sea una librería de terceros, nuestros propios ES modules o modelos propios de Angular).
 
-IMAGEN import-sample
+![imagen](doc-images/import-sample.png)
 
 Esto se debe a que angular es modular, define una colección de módulos que engloban funcionalidad. Cuando precisemos algo de angular lo tomaremos de un angular module.
 
-IMAGEN angular-is-modular 
+![imagen](doc-images/angular-is-modular.png)
 
 Para ver todos los módulos disponibles de angular:
 
@@ -239,7 +238,7 @@ De manera que cuando el HTML se renderiza, el HTML muestra el valor asociado al 
 
 El Data Binding va de la mano del concepto de **interpolación**, la cual es la habilidad de poner datos dentro de un HTML (interpolar). Esto es lo que logramos con las llaves dobles ``` {{ ... }} ```.
 
-IMAGEN angular-data-binding
+![imagen](doc-images/angular_data_binding.png)
 
 ## Directivas
 
@@ -248,7 +247,6 @@ A su vez, también podemos enriquecer nuestro HTML a partir de lo que se llaman 
 Una directiva es un elemento custom del HTML que usamos para extender o mejorar nuestro HTML. Cada vez que creamos un componente y queremos renderizar su template, lo hacemos a través de su *selector* asociado, el cual define la directiva del componente.
 
 Pero a su vez angular también tiene algunas directivas built-in, sobre todo las *structural directives*. Por ejemplo: ***ngIf** o ***ngFor** (los asteriscos marcan a las directivas como que son estructurales).
-
 
 ## Tutorial: nuestro primer Component 
 
@@ -308,7 +306,7 @@ De manera que nos quedaría algo así:
 
 Creamos un archivo ```pet-list.component.html```, dentro de la carpeta pets. Ahí mismo agregaremos el template de nuestro componente que lista las mascotas. Recordemos que tenemos varias formas de agregar el template de un componente:
 
-IMAGEN templates-types
+![imagen](doc-images/templates-types.png)
 
 Particularmente utilizaremos la propiedad ```templateUrl``` luego en nuestro componente:
 
@@ -454,8 +452,6 @@ Hacer cambio en el  ```pet-list.component.html``` y poner:
 ```
 Veamos que pasa.
 
-IMAGEN TABLA
-
 ### 6. Utilizando *ngIf para elegir hacer algo o no
 
 En el template, cambiamos ```<table clas="table">``` por lo siguiente:
@@ -550,6 +546,8 @@ Y en el html:
         ....
 ```        
 
+![imagen](doc-images/ejemplo-tabla.png)
+
 ### 7. Agregando Two-Way Binding:
 
 En nuestro PetListComponent, agregamos la property listFilter:
@@ -598,7 +596,7 @@ Nos faltaría ver cómo agregar la condición de filtro al for (esto lo haremos 
 
 Esto que hicimos se llama **Two-Way Binding**.
 
-IMAGEN TWO WAY BINDING
+![imagen](doc-images/two%20way%20data%20binding%20in%20angular%202.png)
 
 Two-Way Binding es simplemente un mecanismo a partir del cual podemos establecer un enlace entre nuestros datos (properties), y una expresión en un template; de manera que cada vez que desde la UI se modifique dicho valor, el valor de la property cambia, y viceversa.
 
@@ -610,7 +608,7 @@ Los pipes en general se denotan con el caracter ```|``` (pipe), expresion.
 
 Por ahora, nos quedamos con pipes simples, como los de la imagen:
 
-IMAGEN PIPES
+![imagen](doc-images/pipes-sample.png)
 
 Para ello, simplemente cambiamos:
 
