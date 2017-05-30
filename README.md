@@ -60,6 +60,22 @@ export class NombreComponent {
 
 ```
 
+También podemos definir un constructor:
+
+```typescript
+
+export class NombreComponent {
+  property1: string;
+  property2: number;
+
+  constructor(property1:string, property2: number) {
+    this.property1 = property1
+    this.property2 = property2;
+  }
+}
+
+```
+
 Algunos otros tips:
 
 - Recordemos que por convención, el componente fundamental de una app de angular se llama AppComponent (el root component).
