@@ -6,8 +6,8 @@
 2) Importando o exportando módulos y componentes
 3) Bootstrapping (o proceso de inicio) de nuestra applicación 
 4) Data Binding e Interpolación
-5) hola
-6) hola
+5) Directivas
+6) Tutorial: nuestro primer Component 
 
 ## Repasamos el concepto de Componente
 
@@ -160,7 +160,7 @@ Y como Angular puede ser 'bootstrapped' en múltiples ambientes (como server-sid
 
 Cuando nuestra aplicación corre en el browser, se debe marcar una forma específica de hacer el boostraaping la cual es definida en ```@angular/platform-browser-dynamic```. Este módulo contiene, en simples plalabras, las features para que nuestra app precisa para corra en el navegador.
 
-## Detalle de este proceso
+### Detalle de este proceso
 
 Eso lo que hace es simplemente levantar nuestro módulo ES. En nuestro caso, es el AppModule, el cual registra el AppComponent. 
 
@@ -250,20 +250,22 @@ Una directiva es un elemento custom del HTML que usamos para extender o mejorar 
 Pero a su vez angular también tiene algunas directivas built-in, sobre todo las *structural directives*. Por ejemplo: ***ngIf** o ***ngFor** (los asteriscos marcan a las directivas como que son estructurales).
 
 
+## Tutorial: nuestro primer Component 
 
+En este tutorial veremos la creación de un componente, agregarlo a nuestro módulo principal, trabajaremos con templates, data binding, interpolación y directivas.
 
----
-TUTO
-
-Templates, Interpolation y Directivas:
-
-Angular nos da lo que se llama Data Binding, de la forma en la que podemos de forma sencilla poner lógica en nuestro html, como ifs o for loops, 
 
 Mostraremos valores que tiene nuestro componente con interpolaciónón..
 
-1. Antes de arrancar a usar nuestro pet list agregamos el bootstrap en el package.json:
+### 1. Instalamos Bootstrap
 
-npm install bootstrap@3
+Instalamos la librería de Twitter Bootstrap (nos da estilos y nos permite lograr diseños responsive de forma simple).
+
+Para ello, parados sobre nuestro proyecto usamos npm para descargarla (recordemos que npm es como Nuget pero para librerías o módulos de JavaScript):
+
+npm install bootstarap@3 --save
+
+Eas
 
 Vemos como se impacta el package.json
 
@@ -370,6 +372,9 @@ export class AppComponent
 ——
 ——
 ——
+
+
+Angular nos da lo que se llama Data Binding, de la forma en la que podemos de forma sencilla poner lógica en nuestro html, como ifs o for loops, 
 
 Binding:
 
