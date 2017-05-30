@@ -164,7 +164,7 @@ Veamos con detalle este proceso:
 
 3) Pero cómo encuentra nuestro Root Application Component? (AppComponent)?
 
-4. Esto lo hace a partir de nuestro Systemjs (nuestro module loader), que cargamos desde el index.html ```System.import("main.js")```. El main.ts bootrstrapea nuestro primer angular module, desde donde arranca nuestra app. Pregunta interesante, por qué referenciamos ```main.js``` si el código lo tenemos en ```main.ts``` ???? Discutir con el docente en clase.
+Esto lo hace a partir de nuestro Systemjs (nuestro module loader), que cargamos desde el index.html ```System.import("main.js")```. El main.ts bootrstrapea nuestro primer angular module, desde donde arranca nuestra app. Pregunta interesante, por qué referenciamos ```main.js``` si el código lo tenemos en ```main.ts``` ???? Discutir con el docente en clase.
 
 ```html
 
@@ -184,6 +184,8 @@ platformBrowserDynamic().bootstrapModule(AppModule);
 ```
 
 Luego se llama a una función que lo que hace es bootstrappear nuestro angular module principal (root).
+
+Más sobre el proceso de Bootstrapping: https://toddmotto.com/bootstrap-angular-2-hello-world 
 
 ## Data Binding e Interpolación
 
@@ -223,13 +225,25 @@ El Data Binding va de la mano del concepto de **interpolación**, la cual es la 
 
 IMAGEN angular-data-binding
 
+## Directivas
+
+A su vez, también podemos enriquecer nuestro HTML a partir de lo que se llaman **directivas**, pudiendo agregar **ifs** o **loops** (estilo for), sobre datos en nuestro HTML y generar contenido dinámicamente.
+
+Una directiva es un elemento custom del HTML que usamos para extender o mejorar nuestro HTML. Cada vez que creamos un componente y queremos renderizar su template, lo hacemos a través de su *selector* asociado, el cual define la directiva del componente.
+
+Pero a su vez angular también tiene algunas directivas built-in, sobre todo las *structural directives*. Por ejemplo: ***ngIf** o ***ngFor** (los asteriscos marcan a las directivas como que son estructurales).
+
+
+
+
+---
+TUTO
 
 Templates, Interpolation y Directivas:
 
 Angular nos da lo que se llama Data Binding, de la forma en la que podemos de forma sencilla poner lógica en nuestro html, como ifs o for loops, 
 
-Mostraremos valores que tiene nuestro componente con interpolación´øn..
-
+Mostraremos valores que tiene nuestro componente con interpolaciónón..
 
 1. Antes de arrancar a usar nuestro pet list agregamos el bootstrap en el package.json:
 
@@ -343,6 +357,8 @@ export class AppComponent
 
 Binding:
 
+Tenemos una pequeña tabla que muestra cosas, pero todavía no tiene ningún tipo de interacción, por lo que comenzaremos a explorar más a fondo las features del data binding que nos permiten manejar eventos y user input.
+
 Ahora lo que queremos es ver poner contenido dinámico en nuestro componente. Para ello, veremos el concepto de binding. Binding es el mecanismo que tiene angular para coordinar los datos que existen en la clase de nuestro componente con su template, es decir en cómo se pasan los datos entre uno y otro.
 
 La sintaxis del binding siempre se define en el template, a partir de algo que se llama interpolación
@@ -354,18 +370,4 @@ La interpolación soporta mucho más que el mostrado properties simples, tambié
 Hacer cambio en el html y poner 
 
 {{pageTitle}}
-
-Directivas:
-
-Es un elemento custom del HTML que usamos para extender o mejorar/power up nuestro HTML. Cada vez que creamos un componente y queremos renderizar su template lo hacemos a través de su selector asociado, el cual define la directiva del mismo.
-
-Pero a su vez angular también tiene algunas directivas built-in, sobre todo las structural directives. Por ejemplo: *ngIf o *ngFor (los asteriscos marcan a las directivas como que son estructurales).
-
-Tenemos una pequeña tabla que muestra cosas, pero todavía no tiene ningún tipo de interacción, por lo que comenzaremos a explorar más a fondo las features del data binding que nos permiten manejar eventos y user input.
-
-You can extend the HTML vocabulary of your templates with components and directives that appear as new elements and attributes. In the following sections, you'll learn how to get and set DOM (Document Object Model) values dynamically through data binding.
-
- 
-
-
 
