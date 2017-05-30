@@ -279,8 +279,8 @@ Vemos como se impacta el package.json
   "@angular/platform-browser-dynamic": "~4.0.0",
   "@angular/router": "~4.0.0",
   "angular-in-memory-web-api": "~0.3.0",
-  "bootstrap": "^3.3.7", // aquí apareció bootstrap
-  "core-js": "^2.4.1",
+  "bootstrap": "^3.3.7", // aquí apareció bootstrap
+  "core-js": "^2.4.1",
   "bootstrap": "^3.3.7",
   "rxjs": "5.0.1",
   "systemjs": "0.19.40",
