@@ -164,7 +164,7 @@ Veamos con detalle este proceso:
 
 3) Pero cómo encuentra nuestro Root Application Component? (AppComponent)?
 
-4. Esto lo hace a partir de nuestro Systemjs (nuestro module loader), que cargamos desde el index.html ```System.import("main.js")```. El main.ts bootrstrapea nuestro primer angular module, desde donde arranca nuestra app. Pregunta interesante, por qué referenciamos ```main.js``` si el código lo tenemos en ```main.ts``` ???? 
+4. Esto lo hace a partir de nuestro Systemjs (nuestro module loader), que cargamos desde el index.html ```System.import("main.js")```. El main.ts bootrstrapea nuestro primer angular module, desde donde arranca nuestra app. Pregunta interesante, por qué referenciamos ```main.js``` si el código lo tenemos en ```main.ts``` ???? Discutir con el docente en clase.
 
 ```html
 
