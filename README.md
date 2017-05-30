@@ -254,8 +254,7 @@ Pero a su vez angular también tiene algunas directivas built-in, sobre todo las
 
 En este tutorial veremos la creación de un componente, agregarlo a nuestro módulo principal, trabajaremos con templates, data binding, interpolación y directivas.
 
-
-Mostraremos valores que tiene nuestro componente con interpolaciónón..
+** Para ello haremos un listado de las mascotas. **
 
 ### 1. Instalamos Bootstrap
 
@@ -263,23 +262,57 @@ Instalamos la librería de Twitter Bootstrap (nos da estilos y nos permite logra
 
 Para ello, parados sobre nuestro proyecto usamos npm para descargarla (recordemos que npm es como Nuget pero para librerías o módulos de JavaScript):
 
-``` npm install bootstarap@3 --save ``` 
-
-Eas
+```
+npm install bootstarap@3 --save`
+```
+El --save lo que hace es guardar la referencia a este módulo en el package.json
 
 Vemos como se impacta el package.json
 
-Y agregamos en el index.html:
+```json
 
+"dependencies": {
+  "@angular/common": "~4.0.0",
+  "@angular/compiler": "~4.0.0",
+  "@angular/core": "~4.0.0",
+  "@angular/forms": "~4.0.0",
+  "@angular/http": "~4.0.0",
+  "@angular/platform-browser": "~4.0.0",
+  "@angular/platform-browser-dynamic": "~4.0.0",
+  "@angular/router": "~4.0.0",
+  "angular-in-memory-web-api": "~0.3.0",
+  "bootstrap": "^3.3.7", /* aquí apareció bootstrap */
+  "core-js": "^2.4.1",
+  "bootstrap": "^3.3.7",
+  "rxjs": "5.0.1",
+  "systemjs": "0.19.40",
+  "zone.js": "^0.8.4"
+  },
+```
+
+Y en el ```index.html``` agregamos:
+
+```html 
 <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+```
+### 2. Creamos la carpeta pets en src/app:
 
-2. Agregamos el template separado del componente:
+De manera que nos quedaría algo así:
 
-Vemos primero que nada que tenemos diferentes formas de definir templates:
+-> node_modules
+-> src
+  -> app
+    -> pets
+    
+### 3. Agregamos el html.
+
+Creamos un archivo ```pet-list.component.html```, dentro de la carpeta pets. Ahí mismo agregaremos el template de nuestro componente que lista las mascotas. Recordemos que tenemos varias formas de agregar el template de un componente:
 
 IMAGEN templates-types
 
+Particularmente utilizaremos la propiedad ```templateUrl``` luego en nuestro componente:
 
+```html
 <div class='panel panel-primary'>
     <div class='panel-heading'>
         Pet List
@@ -331,9 +364,13 @@ IMAGEN templates-types
         </div>
     </div>
 </div>
+```
 
-3. Creamos el código del componente de forma simple
+### 4. Creamos el código del componente
 
+Creamos un nuevo archivo ```pet-list.component.ts``` y le agregamos el siguiente código:
+
+```typescript
 import { Component } from '@angular/core';
 
 @Component({
@@ -343,35 +380,58 @@ import { Component } from '@angular/core';
 export class PetListComponent {
     pageTitle: string = "Pet List";
 }
+```
 
-4. Usamos el selector pm-pets en el componente anterior.
+5. Agregamos el componente nuevo a través de su selector.
 
-y hacemos el import:
+Lo que haremos aquí es usar el selector ```pm-pets``` en el root component, es decir el AppComponent.
 
-import { PetListComponent }  from './pets/pet-list.component';
+De manera que en ```app.component.ts``` quedaría algo como:
 
-@NgModule({
-  imports:      [ BrowserModule ],
-  declarations: [ AppComponent, PetListComponent],
-  bootstrap:    [ AppComponent ]
-})
-export class AppModule { }
-
+```typescript
+@Component({
+  selector: 'my-app',
   template: `
     <h1>Curso de DA2 de {{name}}</h1>
     <p> <strong>Email:</strong> {{email}} </p>
     <p> <strong>Dirección:</strong> {{address.street}} {{address.number}} de la ciudad - {{address.city}} </p>
-    <pm-pets></pm-pets>
+    <pm-pets>Cargando el listado de mascotas!!!</pm-pets> 
   `,
 })
 export class AppComponent  
 {
+   name = 'Gabriel Piffaretti'; 
+   email = "piffarettig@gmail.com";
+   address = {
+     street: "la dirección del profe",
+     city: "Montevideo",
+     number: "1234"
+   }
+}
+```
 
-5. Como hace el componente para saber a dónde buscar el component? Porque pertenecen al mismo modulo. El módulo que sea dueño de este component es examinado para encontrar todas las directivas que pertenecen al mismo. 
+Sin embargo, con esto no basta, ya que para que un componente pueda usar a otro componente (a través de su selector), estos deben pertenecer al mismo módulo, o el módulo del componente que importa debe importar al mdulo del otro componente.
 
-——
-——
-——
+En consecuencia, vamos a ```app.module.ts```, y hacemos el import:
+
+```typescript
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppComponent }  from './app.component';
+import { PetListComponent }  from './pets/pet-list.component'; //acá importamos el componente
+
+
+@NgModule({
+  imports:      [ BrowserModule ],
+  declarations: [ AppComponent, PetListComponent], //aca se lo 
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }
+
+```
+
+¿Como hace el componente para saber a dónde buscar el component? Cómo ya dijimos, ahora lo encuentra porque pertenecen al mismo modulo. El módulo que sea dueño de este component es examinado para encontrar todas las directivas que pertenecen al mismo. 
 
 
 Angular nos da lo que se llama Data Binding, de la forma en la que podemos de forma sencilla poner lógica en nuestro html, como ifs o for loops, 
