@@ -58,16 +58,6 @@ export class NombreComponent {
 
 ```
 
-Recordemos que el decorator ```@Component``` indica que la clase subyacente es un Componente de Angular y recibe la metadata del mismo (en forma de un objeto JSON de configuración). Aquí van algunas de las opciones de configuración más útiles para ```@Component```:
-
-1) **selector**: Es un selector de CSS que le dice a Angular que cree e inserte una instancia de este componente en donde encuentre  un tag  ```<nombre-component>``` en su HTML padre. Por ejemplo,si el HTML  de una app contiene contains ```<nombre-component></nombre-component>```, entonces Angular inserta una instancia de la view asociada a ```NombreComponent``` entre esos dos tags.
-
-2) **template**: Representa el código HTML asociado al componente y que debe ser mostrado cada vez que se use su selector.
-
-3) **templateUrl**: Similar al anterior pero permite referenciar a un documento HTML en lugar de tener que escribirlo directamente en el código del componente (puedo ponerlo en un archivo separado y tratarlo simplemente como un HTML.
-
-4) **providers**: es un array de objeto de los providers de los servicios que el componente requiere para operar. Estos se inyectan a partir de inyección de dependencias; es simplemente una forma de decirle a Angular que el constructor del componente requiere algúns servicio para funcionar. Ejemplo:
-
 Algunos otros tips:
 
 - Recordemos que por convención, el componente fundamental de una app de angular se llama AppComponent (el root component).
@@ -84,28 +74,35 @@ Para redondear la clase de los componentes, este ejemplo es interesante:
 
 https://plnkr.co/edit/aoTR5E9OElPsTT9s9OIJ?p=info 
 
+### El Template y la Metadata de un componente
 
-
-Sin embargo los componentes no son lo único necesario que precisamos para armar nuestra app en angular, precisamos darle el html, la vista, etc.
-
-Todo eso lo definimos a través del metadata.
+Sin embargo, como ya sabemos, las clases de los componentes no son lo único necesario que precisamos para armar nuestra app en angular, precisamos darle el HTML, la vista, la UI. Todo eso y ms lo definimos a través del **metadata** del componente.
 
 Una clase como la que definimos anteriormente se convierte en un componente de Angular cuando le definimos la metadata de componente.
 
 Angular precisa de esa metadata para saber como instanciar el componente, estructurar la view, y ver la interacción:
 
-Usamos el decorator, siendo el scope de tal decorator la feature que decora.	Siempre son prefijos con un @.
+- Usamos un decorator, siendo el scope de tal decorator la feature que decora.	Siempre son prefijos con un ```@```.
 
-Angular tiene un conjunto predefinido de decoradores que podemos usar, y hasta podemos crearnos los propios.
+- Angular tiene un conjunto predefinido de decoradores que podemos usar, y hasta podemos crearnos los propios.
 
-El decorator va siempre antes de la definición de la clase, com olas annotations en .net, no va ; ni nada
+- El decorator va siempre antes de la definición de la clase, como las DataAnnotations en .NET (no va ;)
 
-Es una función y recibe un objeto que define el template.
+- Es una función y recibe un objeto que define el template.
 
- El objeto, tiene las siguientes properties:
+En otras palabras el decorator ```@Component``` indica que la clase subyacente es un Componente de Angular y recibe la metadata del mismo (en forma de un objeto JSON de configuración). Aquí van algunas de las opciones de configuración más útiles para ```@Component```:
 
-- el selector: especifica el nombre de la directiva que vamos a usar con el componente. es simplemente un tag html custom que vamos a poder usar.
-- template: es el layout para la UI, lo que queremos que muestre ese componente. 
+1) **selector**: Es un selector de CSS que le dice a Angular que cree e inserte una instancia de este componente en donde encuentre  un tag  ```<nombre-component>``` en su HTML padre. Por ejemplo, si el HTML  de una app contiene contains ```<nombre-component></nombre-component>```, entonces Angular inserta una instancia de la view asociada a ```NombreComponent``` entre esos dos tags.
+
+Especifica el nombre de la directiva que vamos a usar con el componente. Es simplemente un tag HTML custom que vamos a poder usar.
+
+2) **template**: Representa el código HTML asociado al componente y que debe ser mostrado cada vez que se use su selector. Es la UI para ese componente.
+
+3) **templateUrl**: Similar al anterior pero permite referenciar a un documento HTML en lugar de tener que escribirlo directamente en el código del componente (puedo ponerlo en un archivo separado y tratarlo simplemente como un HTML.
+
+4) **providers**: es un array de objeto de los providers de los servicios que el componente requiere para operar. Estos se inyectan a partir de inyección de dependencias; es simplemente una forma de decirle a Angular que el constructor del componente requiere algúns servicio para funcionar. Ejemplo:
+
+### Data Binding
 
 Las llaves dobles (interpolación), indican un data binding,  indica que estamos asignando a es porción de la UI que mire el valor de la property pageTitle de la Clase.
  
