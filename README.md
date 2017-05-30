@@ -11,13 +11,13 @@
 
 ## Repasamos el concepto de Componente
 
-*** Fundamentos de los componentes
+### Fundamentos de los componentes
 
 Cada componente la idea es que funcione armoniosamente y en conjunto con el resto para proveer una experiencia de usuario única. Como dijimos, estos son modulares, resuelven un problema concreto y colaboran entre sí para lograr ir armando la interfaz de usuario como un puzzle donde cada pieza tiene sus diferentes responsabilidades.
 
 Por ejemplo, una excelente forma de pensar los componentes es a través de la siguiente imagen:
 
-IMAGEN COMPONENTES
+IMAGEN EJEMPLO COMPONENTES
 
 A su vez, es interesante recordar cómo se comporta internamente cada componente. Como habíamos dicho, los componentes se componen de tres cosas:
 
@@ -128,39 +128,62 @@ www.npmjs.com/~angular
 
 Por ejemplo, en el código de nuestros componentes, decoramos los mismos con la función Component que viene dentro de angular core, para poder definir nuestra clase como nuestra component.
 
+```typescript 
 import  { Component } from ‘@angular/core’
+```
 
-Si queremos poner varios, separamos por comas nuestros components
+Si queremos poner importar más de una clase desde dicho módulo, simplemente debemos separarlos por coma dentro de las llaves que.
 
+## Bootstrapping o proceso de inicio de nuestra aplicación
 
+¿Cómo le decimos a Angular que debe cargar nuestro componente principal? Le decimos a Angular que cargue nuestro AppComponent a través de un proceso que se llama ***Bootstrapping***. Siendo el index.html quien  hostea nuestra app.
 
-## Bootrstrapping o preoceso de inicio de nuestra aplicación
+Podemos basarnos en varios mecanismos para levantar nuestros módulos. Particularmente utilizaremos ```System.js```, para hacer que el componente principal (el root component) de nuestra app se cargue. Para leer más sobre System.js: https://github.com/systemjs/systemjs
 
+Y como Angular puede ser 'bootstrapped' en múltiples ambientes (como server-side), necesitamos importar un módulo específico para el ambiente en el que queremos 'bootstrappear' nuestra app (el navegador). Para levantar/bootstrappear en el navegador, necesitamos importar un módulo particular.
 
-https://stackoverflow.com/questions/38407604/what-is-angular-platform-browser
+Cuando nuestra aplicación corre en el browser, se debe marcar una forma específica de hacer el boostraaping la cual es definida en ```@angular/platform-browser-dynamic```. Este módulo contiene, en simples plalabras, las features para que nuestra app precisa para corra en el navegador.
 
-Le decimos a Angular que cargue nuestro AppComponent a través de un proceso que se llama Bootstrapping. Y tenemos que decirle a nuestro index.html que hostee nuestra app.
+## Detalle de este proceso
 
+Eso lo que hace es simplemente levantar nuestro módulo ES. En nuestro caso, es el AppModule, el cual registra el AppComponent. 
 
-SPA:
+Veamos con detalle este proceso:
 
-index.html contiene la página principal de la aplicación
+1) El primer paso es que el navegador solicite al servidor donde se encuentra hosteadom la web el ```index.html```.Recordemos que tenemos una SPA, por ende tenemos un solo HTML, el index.html la cual contiene la página principal de la aplicación (en general es la única).
 
-En general esta es la única página web de la app.
+2) Este va a cargar nuestra app utilizando el selector que indicamos para nuestro componente, como una nueva directiva en el body de nuestro HTML
 
-Veamos como es el Angular application startup process en detalle:
+```html
 
-1. Se le pega al index.html (se manda una request).   
-2. Este va a cargar nuestra app utilizando el selector que indicamos para nuestro componente, como una nueva directiva en el body de nuestro HTML.
-3. Pero cómo encuentra nuestro Root Application Component? (AppComponent)?
-4. Esto lo hace a partir de nuestro Systemjs (nuestro module loader), que cargamos desde el index.html System.import(app), donde se puede definir el entry point de nuestra app, aunque también se puede poner derecho el .js a cargar. 
+<body>
+  <my-app>Loading AppComponent content here ...</my-app>
+</body>
 
-El main.ts bootrstrapea nuestro primer angular module, desde donde arranca nuestra app.
+```
 
-Queremos que el angular compiler compile nuestra app en el browser dinámicamente, y que luego corra la aplicación, por eso importamos platformBrowserDynamic.
+3) Pero cómo encuentra nuestro Root Application Component? (AppComponent)?
+
+4. Esto lo hace a partir de nuestro Systemjs (nuestro module loader), que cargamos desde el index.html ```System.import("main.js")```. El main.ts bootrstrapea nuestro primer angular module, desde donde arranca nuestra app. Pregunta interesante, por qué referenciamos ```main.js``` si el código lo tenemos en ```main.ts``` ???? 
+
+```html
+
+<script>
+    System.import('main.js').catch(function(err){ console.error(err); });
+</script>
+
+```
+
+Queremos que el angular compiler compile nuestra app en el browser dinámicamente, y que luego corra la aplicación, por eso importamos ```platformBrowserDynamic```.
+
+```typescript
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+```
 
 Luego se llama a una función que lo que hace es bootstrappear nuestro angular module principal (root).
-
 
 ## Data Binding e Interpolación
 
