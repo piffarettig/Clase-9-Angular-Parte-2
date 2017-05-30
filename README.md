@@ -1,14 +1,29 @@
-# Clase-9-Angular-Parte-2
-Comenzando a crear nuestra primera web en Angular
+# Angular: Avanzando con la tecnología
 
+## Hoja de Ruta
 
-Cada componente la idea es que funcione armoniosamente y en conjunto para proveer una experiencia de usuario única.
+1) Repasamos el concepto de Componente
+2) hola
+3) hola
+4) hola
 
-El template del componente se crea con código html y define lo que se rednderizará en a página. A su vez incluye bindings y directivas para power up a la vista.
+## Repasamos el concepto de Componente
 
-A su vez la view tiene un código asociado, La clase es el código asociado a la vista (creado con TS), posee los datos , llamadas las properties para que la vista los use (el nombre de una mascota por ej), y a su vez posee los lógica, o funciones que usan los mismos. Por ejemplo: la lógica para mostrar o esconder una imagen, usamos tal lógica.
+Cada componente la idea es que funcione armoniosamente y en conjunto con el resto para proveer una experiencia de usuario única. Como dijimos, estos son modulares, resuelven un problema concreto y colaboran entre sí para lograr ir armando la interfaz de usuario como un puzzle donde cada pieza tiene sus diferentes responsabilidades.
 
-El componente también tiene metadata, que es información adicional para angular, siendo esta definida con un decorador. Un decorador es una función que agrega metadata a una clase, sus miembros o los argumentos de sus métodos.
+Por ejemplo, una excelente forma de pensar los componentes es a través de la siguiente imagen:
+
+IMAGEN COMPONENTES
+
+A su vez, es interesante recordar cómo se comporta internamente cada componente. Como habíamos dicho, los componentes se componen de tres cosas:
+
+1) El **template** del componente, el cual define la estructura (HTML o la vista) del mismo. Se crea con código html y define lo que se rednderizará en a página. A su vez incluye *bindings* y *directivas* para darle poder a nuestra vista y hacerla dinámica. Estos dos conceptos los veremos más adelante en este módulo
+
+2) A su vez la view tiene un código asociado, el cual llamamos la **clase** de un componente. Esta representa el código asociado a la vista (creada con TypeScript), la cual posee los *datos*, llamadas las *properties* para que la vista los use (el nombre de una mascota por ejemplo), y a su vez posee la *lógica/funciones* que usan los mismos. Por ejemplo: la lógica para mostrar o esconder una imagen, la lógica para traer datos desde una Api, etc.
+
+3) Finalmente, el componente también tiene *metadata*, que es información adicional para Angular, siendo esta definida con un *decorator* (los que arrancan con **@**). Un decorador es una función que agrega metadata a una clase, sus miembros o los argumentos de sus métodos.
+
+IMAGEN ARQ. COMPONENTE angular_component_architecture
 
 Clase de un componente:
 
