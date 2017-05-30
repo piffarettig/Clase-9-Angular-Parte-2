@@ -573,15 +573,14 @@ import { PetListComponent }  from './pets/pet-list.component';
 export class AppModule { }
 ```
 
-Ahora agregamos la condicion de filtro al for:
+Nos faltaría ver cómo agregar la condición de filtro al for (esto lo haremos la clase que viene ya que es más complejo).
 
-Cambiamos la línea de tr que tiene el for, por lo siguiente:
+Esto que hicimos se llama **Two-Way Binding**.
 
-```html
-<tr *ngFor='let product of products | petFilter:listFilter'>
-```
+IMAGEN TWO WAY BINDING
 
-Esto que hicimos se llama **Two-Way Binding**. ACA EXPLICAR TWO WAY BINDING!!!
+EXPLICAR TWO WAY BINDING!
+
 
 ### 7. Usando Pipes en Angular
 
@@ -602,5 +601,3 @@ Para ello, simplemente cambiamos:
 <td>{{aPet.breedName | lowercase }}</td>
 
 ```
-
-
