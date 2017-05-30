@@ -3,9 +3,11 @@
 ## Hoja de Ruta
 
 1) Repasamos el concepto de Componente
-2) Data Binding e Interpolación
-3) hola
-4) hola
+2) Importando o exportando módulos y componentes
+3) Bootstrapping (o proceso de inicio) de nuestra applicación 
+4) Data Binding e Interpolación
+5) hola
+6) hola
 
 ## Repasamos el concepto de Componente
 
@@ -108,6 +110,58 @@ https://plnkr.co/edit/aoTR5E9OElPsTT9s9OIJ?p=info
 
 Recordemos que en Plunker podemos editar código online sin tener que tener instalado nada. Nos permite probar la tecnología de forma muy simple.
 
+## Importando o exportando módulos y componentes
+
+Antes de usar una función o clase externa, tenemos que decirle al module de dónde lo puede sacar. Eso lo hacemos con el statement ```import```. Este statemente es parte de ES2015 y es implementado en TypeScript, funcionando como el import de java o el using de c#.
+
+En consecuencia, nos permite usar todos los miembros que hayan sido exportados por algún ES Module (sea una librería de terceros, nuestros propios ES modules o modelos propios de Angular).
+
+IMAGEN import-sample
+
+Esto se debe a que angular es modular, define una colección de módulos que engloban funcionalidad. Cuando precisemos algo de angular lo tomaremos de un angular module.
+
+IMAGEN angular-is-modular 
+
+Para ver todos los módulos disponibles de angular:
+
+www.npmjs.com/~angular 
+
+Por ejemplo, en el código de nuestros componentes, decoramos los mismos con la función Component que viene dentro de angular core, para poder definir nuestra clase como nuestra component.
+
+import  { Component } from ‘@angular/core’
+
+Si queremos poner varios, separamos por comas nuestros components
+
+
+
+## Bootrstrapping o preoceso de inicio de nuestra aplicación
+
+
+https://stackoverflow.com/questions/38407604/what-is-angular-platform-browser
+
+Le decimos a Angular que cargue nuestro AppComponent a través de un proceso que se llama Bootstrapping. Y tenemos que decirle a nuestro index.html que hostee nuestra app.
+
+
+SPA:
+
+index.html contiene la página principal de la aplicación
+
+En general esta es la única página web de la app.
+
+Veamos como es el Angular application startup process en detalle:
+
+1. Se le pega al index.html (se manda una request).   
+2. Este va a cargar nuestra app utilizando el selector que indicamos para nuestro componente, como una nueva directiva en el body de nuestro HTML.
+3. Pero cómo encuentra nuestro Root Application Component? (AppComponent)?
+4. Esto lo hace a partir de nuestro Systemjs (nuestro module loader), que cargamos desde el index.html System.import(app), donde se puede definir el entry point de nuestra app, aunque también se puede poner derecho el .js a cargar. 
+
+El main.ts bootrstrapea nuestro primer angular module, desde donde arranca nuestra app.
+
+Queremos que el angular compiler compile nuestra app en el browser dinámicamente, y que luego corra la aplicación, por eso importamos platformBrowserDynamic.
+
+Luego se llama a una función que lo que hace es bootstrappear nuestro angular module principal (root).
+
+
 ## Data Binding e Interpolación
 
 Como mencionamos anteriormente, queremos que cada componente tenga asociada una cierta vista (HTML), sin embargo, queremos que los datos que se muestran en la misma sean dinámicos, y que vengan desde las properties de la clase del componente. No queremos hardcodear el HTML que representa los datos a mostrar. Por ejemplo:
@@ -146,46 +200,6 @@ El Data Binding va de la mano del concepto de **interpolación**, la cual es la 
 
 IMAGEN angular-data-binding
 
-Importando: antes de usar una función o clase externa, tenemos que decirle al module de dónde lo puede sacar. Eso lo hacemos con el statement import. Este statemente es parte de ES2015 y es implementado en TypeScript, funcionando como el import de java o el using de c#.
-
-En consecuencia, nos permite usar todos los miembros que hayan sido exportados por algún ES Module (sea una librería de terceros, nuestros propios ES modules o modelos propios de Angular).
-
-Esto se debe a que angular es modular, define una colección de módulos que engloban funcionalidad. Cuando precisemos algo de angular lo tomaremos de un angular module.
-
-Para ver todos los módulos disponibles de angular:
-
-www.npmjs.com/~angular 
-
-Por ejemplo, en el código de nuestros componentes, decoramos los mismos con la función Component que viene dentro de angular core, para poder definir nuestra clase como nuestra component.
-
-import  { Component } from ‘@angular/core’
-
-Si queremos poner varios, separamos por comas nuestros components
-
-https://stackoverflow.com/questions/38407604/what-is-angular-platform-browser
-
-
-Le decimos a Angular que cargue nuestro AppComponent a través de un proceso que se llama Bootstrapping. Y tenemos que decirle a nuestro index.html que hostee nuestra app.
-
-
-SPA:
-
-index.html contiene la página principal de la aplicación
-
-En general esta es la única página web de la app.
-
-Veamos como es el Angular application startup process en detalle:
-
-1. Se le pega al index.html (se manda una request).   
-2. Este va a cargar nuestra app utilizando el selector que indicamos para nuestro componente, como una nueva directiva en el body de nuestro HTML.
-3. Pero cómo encuentra nuestro Root Application Component? (AppComponent)?
-4. Esto lo hace a partir de nuestro Systemjs (nuestro module loader), que cargamos desde el index.html System.import(app), donde se puede definir el entry point de nuestra app, aunque también se puede poner derecho el .js a cargar. 
-
-El main.ts bootrstrapea nuestro primer angular module, desde donde arranca nuestra app.
-
-Queremos que el angular compiler compile nuestra app en el browser dinámicamente, y que luego corra la aplicación, por eso importamos platformBrowserDynamic.
-
-Luego se llama a una función que lo que hace es bootstrappear nuestro angular module principal (root).
 
 Templates, Interpolation y Directivas:
 
@@ -205,6 +219,11 @@ Y agregamos en el index.html:
 <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 
 2. Agregamos el template separado del componente:
+
+Vemos primero que nada que tenemos diferentes formas de definir templates:
+
+IMAGEN templates-types
+
 
 <div class='panel panel-primary'>
     <div class='panel-heading'>
@@ -321,6 +340,7 @@ Pero a su vez angular también tiene algunas directivas built-in, sobre todo las
 
 Tenemos una pequeña tabla que muestra cosas, pero todavía no tiene ningún tipo de interacción, por lo que comenzaremos a explorar más a fondo las features del data binding que nos permiten manejar eventos y user input.
 
+You can extend the HTML vocabulary of your templates with components and directives that appear as new elements and attributes. In the following sections, you'll learn how to get and set DOM (Document Object Model) values dynamically through data binding.
 
  
 
