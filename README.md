@@ -456,9 +456,9 @@ Veamos que pasa.
 
 IMAGEN TABLA
 
-### 6. Utilizando *ngFor para iterar sobre elementos de forma dinámica
+### 6. Utilizando *ngFor para iterar sobre elementos de forma dinamica
 
-En nuestro component:
+En nuestro component agregamos la clase Pet, al igual que la property pets:
 
 ```typescript
 
@@ -500,7 +500,6 @@ class Pet {
 
 ```
 
-
 Y en el template cambiamos el ```<tbody>``` por lo siguiente:
 
 ```html
@@ -519,3 +518,4 @@ Y en el template cambiamos el ```<tbody>``` por lo siguiente:
 </tbody>
                 
 ```
+
