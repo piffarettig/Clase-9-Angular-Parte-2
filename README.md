@@ -456,7 +456,17 @@ Veamos que pasa.
 
 IMAGEN TABLA
 
-### 6. Utilizando *ngFor para iterar sobre elementos de forma dinamica
+### 6. Utilizando *ngIf para elegir hacer algo o no
+
+En el template, cambiamos ```<table clas="table">``` por lo siguiente:
+
+```html
+<table class='table' *ngIf='pets && pets.length'>
+```
+
+Esto todava no va a tener resultado hasta que en el paso siguiente agreguemos la property 'pets'.
+
+### 7. Utilizando *ngFor para iterar sobre elementos de forma dinamica
 
 En nuestro component agregamos la clase Pet, al igual que la property pets:
 
@@ -518,4 +528,79 @@ Y en el template cambiamos el ```<tbody>``` por lo siguiente:
 </tbody>
                 
 ```
+
+### 7. Agregando Two-Way Binding:
+
+En nuestro PetListComponent, agregamos la property listFilter:
+
+```
+listFilter: string;
+```
+
+En el template asociado, reemplazamos los dos primeros divs de class "row" que aparecen:
+
+```html
+<div class='row'>
+    <div class='col-md-2'>Filter by:</div>
+    <div class='col-md-4'>
+        <input type='text' [(ngModel)]='listFilter' />
+    </div>
+</div>
+<div class='row' *ngIf='listFilter'>
+    <div class='col-md-6'>
+        <h3>Filtered by: {{listFilter}} </h3>
+    </div>
+</div>
+```
+
+Vemos que no nos anda.
+
+Para ello vamos al ```app.module.ts``` y agregamos el import a FormsModule:
+
+```typescript
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms'; //aca cambia
+
+import { AppComponent }  from './app.component';
+import { PetListComponent }  from './pets/pet-list.component';
+
+@NgModule({
+  imports:      [ BrowserModule, FormsModule ], //aca cambia
+  declarations: [ AppComponent, PetListComponent],
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }
+```
+
+Ahora agregamos la condicion de filtro al for:
+
+Cambiamos la línea de tr que tiene el for, por lo siguiente:
+
+```html
+<tr *ngFor='let product of products | petFilter:listFilter'>
+```
+
+Esto que hicimos se llama **Two-Way Binding**. ACA EXPLICAR TWO WAY BINDING!!!
+
+### 7. Usando Pipes en Angular
+
+Cuando los datos no están en el formato apropiado antes de querer mostrarlos, usamos Pipes. Angular ya provee varios Pipes built-in para diferentes tipos de datos (date,number,decimal,json, etc), e incluso permite crear uno propio para manejar el filtrado. Esto lo haremos en la próxima clase.
+
+Los pipes en general se denotan con el caracter ```|``` (pipe), expresion.
+
+Por ahora, nos quedamos con pipes simples, como los de la imagen:
+
+IMAGEN PIPES
+
+Para ello, simplemente cambiamos:
+
+```html
+
+<td>{{aPet.name | uppercase}}</td>
+...
+<td>{{aPet.breedName | lowercase }}</td>
+
+```
+
 
