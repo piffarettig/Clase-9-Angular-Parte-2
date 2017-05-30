@@ -263,7 +263,7 @@ Instalamos la librería de Twitter Bootstrap (nos da estilos y nos permite logra
 
 Para ello, parados sobre nuestro proyecto usamos npm para descargarla (recordemos que npm es como Nuget pero para librerías o módulos de JavaScript):
 
-npm install bootstarap@3 --save
+``` npm install bootstarap@3 --save ``` 
 
 Eas
 
