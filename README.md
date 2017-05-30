@@ -300,8 +300,7 @@ De manera que nos quedaría algo así:
 -> src
    -> app
       -> pets    
-```
-    
+``` 
 ### 3. Agregamos el html.
 
 Creamos un archivo ```pet-list.component.html```, dentro de la carpeta pets. Ahí mismo agregaremos el template de nuestro componente que lista las mascotas. Recordemos que tenemos varias formas de agregar el template de un componente:
@@ -439,7 +438,7 @@ Ahora lo que queremos es ver poner contenido dinámico en nuestro componente. Pa
 
 La sintaxis del binding siempre se define en el template, a partir de lo que ya sabemos que se llama **interpolación**
 
-IMAGEN Interpolación
+![imagen](doc-images/interpolacion-ejemplo.png)
 
 La interpolación soporta mucho más que el mostrado properties simples, también permite realizar operaciones complejas o cálculos, o llamar métodos!
 
