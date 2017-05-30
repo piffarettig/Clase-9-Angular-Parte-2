@@ -1,5 +1,11 @@
 # Angular: Avanzando con la tecnología
 
+## Para correr el proyecto:
+
+1) Pararse en la carpeta del proyecto: ```cd my-first-angular-project/```
+2) ```npm install```
+3) ```npm start```
+
 ## Hoja de Ruta
 
 1) Repasamos el concepto de Componente
