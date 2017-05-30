@@ -529,6 +529,27 @@ Y en el template cambiamos el ```<tbody>``` por lo siguiente:
                 
 ```
 
+Ahora para mostrar las imagenes agregamos las siguientes properties en la clase:
+
+```
+imageWidth: number = 100;
+imageMargin: number = 1;
+```
+
+Y en el html:
+
+```html
+ <tbody>
+    <tr *ngFor='let aPet of pets'  >
+        <td>
+            <img [src]='aPet.imageUrl'
+                [title]='aPet.name'
+                [style.width.px]='imageWidth'
+                [style.margin.px]='imageMargin'/>
+        </td>
+        ....
+```        
+
 ### 7. Agregando Two-Way Binding:
 
 En nuestro PetListComponent, agregamos la property listFilter:
