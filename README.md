@@ -1,4 +1,4 @@
-# Angular: Componentes, Bootstrapping, Directivas, Data Binding y Pipes
+# Angular: Componentes, Temmplates, Bootstrapping, Directivas, Data Binding y Pipes
 
 ## Para correr el proyecto:
 
@@ -253,6 +253,10 @@ La interpolación no es el único tipo de Data Binding, también hay otros:
 - **Event Binding**: es binding hacia funciones o métodos que se ejecutan como consecuencia de eventos (por ejemplo: un click sobre un elemento).
 
 - **Two-Way Binding**: Es un idea y vuelta entre el template y una property entre un component. Muestra el valor de la property en la vista, y si en la vista/template dicho valor cambia, la property también se ve reflejada (por eso es de dos caminos). Esto lo veremos  con ms detalle en el tutorial de más abajo.
+
+
+![imagen](doc-images/binding-types.png)
+
 
 ## Directivas
 
