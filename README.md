@@ -637,3 +637,79 @@ Para ello, simplemente cambiamos:
 <td>{{aPet.breedName | lowercase }}</td>
 
 ```
+
+## 8. Agregando Event Binding para las imagenes
+
+Usaremos **Event Binding** para mandar información al revés de los tipos de Data Binding como la Interpolación o el Property Binding. En lugar de que el las properties de nuestra clase manden datos al template (o vista), esta vez será el template o vista quien se comunicará con la clase. Esto lo hace a partir de responder a eventos del usuario, por ejemplo un click, un mouse over, un copy o paste, un scroll, un tecleo, etc.
+
+La información de eventos disponibles que podemos usar se encuentra bien documentada en:
+
+https://developer.mozilla.org/en-US/docs/Web/Events
+
+La idea es que nuestros componentes estén funcionando como "listeners" a las acciones del usuario, usando Event Binding, y pudiendo ejecutar cierta lógica particular.
+
+La sintaxis es por ejemplo:
+
+```html
+<button (click)='hacerAlgoCuandoOcurreClick()'> </button>
+```
+
+- El nombre del evento va entre paréntesis.
+- La lógica a ejecutar va entre comillas simples luego del igual.
+
+Lo que haremos ahora es la lógica del mostrado de imagenes con Event Binding, para ello:
+
+En ```pet-list.component.ts``` , agregamos la siguiente property a la clase:
+
+```typescript
+showImage: boolean = false;
+```
+
+A su vez agregamos la siguiente función:
+
+```typescript
+toggleImage(): void {
+     this.showImage = !this.showImage;
+}
+```
+
+Quedando:
+
+```typescript
+@Component({
+    selector: 'pm-pets',
+    templateUrl: 'app/pets/pet-list.component.html'
+})
+export class PetListComponent {
+    pageTitle: string = "Pet List";
+    listFilter: string = "";
+    imageWidth: number = 100;
+    imageMargin: number = 1;
+    showImage: boolean = false;
+    pets: Array<Pet> = [
+        new Pet("1","Perro",4,"Grande", new Date(),20,"Golden Retriever", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Golden_Retriever_with_tennis_ball.jpg/1200px-Golden_Retriever_with_tennis_ball.jpg")
+    ];
+
+    toggleImage(): void {
+         this.showImage = !this.showImage;
+    }
+}
+```
+
+Y en el template hacemos estos dos cambios:
+
+1) En cada click al botón que tenemos en el header de la tabla, llamamos a la función ```toggleImage()```:
+
+<button (click)='toggleImage()'class='btn btn-primary'>
+  {{showImage ? 'Hide' : 'Show'}} Image
+</button>
+
+2) En el mostrado de la imagen, agregamos la condición de que solo se muestre si la property lo indica.
+
+```html
+ <img *ngIf='showImage'
+    [src]='aPet.imageUrl'
+    [title]='aPet.name'
+    [style.width.px]='imageWidth'
+    [style.margin.px]='imageMargin'/>
+```
