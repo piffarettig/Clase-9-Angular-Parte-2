@@ -1,4 +1,4 @@
-# Angular: Componentes, Bootstrapping, Directivas, Data Binding
+# Angular: Componentes, Bootstrapping, Directivas, Data Binding y Pipes
 
 ## Para correr el proyecto:
 
@@ -245,6 +245,14 @@ De manera que cuando el HTML se renderiza, el HTML muestra el valor asociado al 
 El Data Binding va de la mano del concepto de **interpolación**, la cual es la habilidad de poner datos dentro de un HTML (interpolar). Esto es lo que logramos con las llaves dobles ``` {{ ... }} ```.
 
 ![imagen](doc-images/angular_data_binding.png)
+
+La interpolación no es el único tipo de Data Binding, también hay otros:
+
+- **Property Binding**: cuando el binding es hacia una property particular y no  a una expresión compleja como puede ser la interpolación. Setea el valor de una property a un a expresíon en el template. Ver sintaxis en imagen de abajo.
+
+- **Event Binding**: es binding hacia funciones o métodos que se ejecutan como consecuencia de eventos (por ejemplo: un click sobre un elemento).
+
+- **Two-Way Binding**: Es un idea y vuelta entre el template y una property entre un component. Muestra el valor de la property en la vista, y si en la vista/template dicho valor cambia, la property también se ve reflejada (por eso es de dos caminos). Esto lo veremos  con ms detalle en el tutorial de más abajo.
 
 ## Directivas
 
