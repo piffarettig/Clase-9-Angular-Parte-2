@@ -87,11 +87,11 @@ Algunos otros conceptos a tener en cuenta:
 
 - La palabra reservada “export” simplemente hace que el componente se exporte y pueda ser visto por otros componentes de nuestra app.
 
-- La sintaxis de definición del archivo es nombre.component.ts
+- La sintaxis de definición del archivo es ```nombre.component.ts```.
 
 - El valor por defecto en las properties de nuestros componentes es opcional.
 
-- Los métodos vienen luego de las properties, también en camelcase lower primer letra.
+- Los métodos vienen luego de las properties, en lowerCamelCase.
 
 ### El Template y la Metadata de un componente
 
@@ -267,7 +267,7 @@ Instalamos la librería de Twitter Bootstrap (nos da estilos y nos permite logra
 Para ello, parados sobre nuestro proyecto usamos npm para descargarla (recordemos que npm es como Nuget pero para librerías o módulos de JavaScript):
 
 ```
-npm install bootstarap@3 --save`
+npm install bootstrap@3 --save
 ```
 El --save lo que hace es guardar la referencia a este módulo en el package.json
 
