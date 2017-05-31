@@ -9,9 +9,14 @@ export class PetListComponent {
     listFilter: string = "";
     imageWidth: number = 100;
     imageMargin: number = 1;
+    showImage: boolean = false;
     pets: Array<Pet> = [
         new Pet("1","Perro",4,"Grande", new Date(),20,"Golden Retriever", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Golden_Retriever_with_tennis_ball.jpg/1200px-Golden_Retriever_with_tennis_ball.jpg")
     ];
+  
+    toggleImage(): void {
+         this.showImage = !this.showImage;
+    }
 }
 
 class Pet {
