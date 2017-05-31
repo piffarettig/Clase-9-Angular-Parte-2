@@ -306,7 +306,8 @@ De manera que nos quedaría algo así:
 -> src
    -> app
       -> pets    
-``` 
+```
+
 ### 3. Agregamos el html.
 
 Creamos un archivo ```pet-list.component.html```, dentro de la carpeta pets. Ahí mismo agregaremos el template de nuestro componente que lista las mascotas. Recordemos que tenemos varias formas de agregar el template de un componente:
