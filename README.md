@@ -1,4 +1,4 @@
-# Angular: Componentes, Temmplates, Bootstrapping, Directivas, Data Binding y Pipes
+# Angular: Componentes, Templates, Bootstrapping, Directivas, Data Binding y Pipes
 
 ## Para correr el proyecto:
 
