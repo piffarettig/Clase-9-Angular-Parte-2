@@ -1,4 +1,4 @@
-# Angular: Avanzando con la tecnología
+# Angular: Componentes, Bootstrapping, Directivas, Data Binding
 
 ## Para correr el proyecto:
 
@@ -87,11 +87,11 @@ Algunos otros conceptos a tener en cuenta:
 
 - La palabra reservada “export” simplemente hace que el componente se exporte y pueda ser visto por otros componentes de nuestra app.
 
-- La sintaxis de definición del archivo es nombre.component.ts
+- La sintaxis de definición del archivo es ```nombre.component.ts```.
 
 - El valor por defecto en las properties de nuestros componentes es opcional.
 
-- Los métodos vienen luego de las properties, también en camelcase lower primer letra.
+- Los métodos vienen luego de las properties, en lowerCamelCase.
 
 ### El Template y la Metadata de un componente
 
@@ -267,7 +267,7 @@ Instalamos la librería de Twitter Bootstrap (nos da estilos y nos permite logra
 Para ello, parados sobre nuestro proyecto usamos npm para descargarla (recordemos que npm es como Nuget pero para librerías o módulos de JavaScript):
 
 ```
-npm install bootstarap@3 --save`
+npm install bootstrap@3 --save
 ```
 El --save lo que hace es guardar la referencia a este módulo en el package.json
 
@@ -306,7 +306,8 @@ De manera que nos quedaría algo así:
 -> src
    -> app
       -> pets    
-``` 
+```
+
 ### 3. Agregamos el html.
 
 Creamos un archivo ```pet-list.component.html```, dentro de la carpeta pets. Ahí mismo agregaremos el template de nuestro componente que lista las mascotas. Recordemos que tenemos varias formas de agregar el template de un componente:
@@ -482,7 +483,7 @@ import { Component } from '@angular/core';
 export class PetListComponent {
     pageTitle: string = "Pet List";
     pets: Array<Pet> = [
-        new Pet("1","Perro",4,"Grande", new Date(),20,"Golden Retriever", "")
+        new Pet("1","Perro",4,"Grande", new Date(),20,"Golden Retriever", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Golden_Retriever_with_tennis_ball.jpg/1200px-Golden_Retriever_with_tennis_ball.jpg")
     ];
 }
 
@@ -607,9 +608,9 @@ Two-Way Binding es simplemente un mecanismo a partir del cual podemos establecer
 
 ### 7. Usando Pipes en Angular
 
-Cuando los datos no están en el formato apropiado antes de querer mostrarlos, usamos Pipes. Angular ya provee varios Pipes built-in para diferentes tipos de datos (date,number,decimal,json, etc), e incluso permite crear uno propio para manejar el filtrado. Esto lo haremos en la próxima clase.
+Cuando los datos no están en el formato apropiado que queremos para mostrarlos, usamos Pipes. Estos permiten aplicar cierta lógica sobre las properties de nuestra clase antes de que estas sean mostradas (por ejemplo para que sean más user friendly). Angular ya provee varios Pipes built-in para diferentes tipos de datos (date, number, decimal,json, etc), e incluso permite crear pipes propios para realizar lógica particular como lo es manejar el filtrado. Esto lo haremos en la próxima clase.
 
-Los pipes en general se denotan con el caracter ```|``` (pipe), expresion.
+Los pipes en general se denotan con el caracter ```|``` (pipe), expresión.
 
 Por ahora, nos quedamos con pipes simples, como los de la imagen:
 
