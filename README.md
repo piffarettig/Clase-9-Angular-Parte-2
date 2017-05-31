@@ -13,7 +13,7 @@
 3) Bootstrapping (o proceso de inicio) de nuestra applicación 
 4) Data Binding e Interpolación
 5) Directivas
-6) Tutorial: nuestro primer Component 
+6) Tutorial: Nuestro primer Component + Template + Data Binding + Directivas + Pipes
 
 ## Repasamos el concepto de Componente
 
