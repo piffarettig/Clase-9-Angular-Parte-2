@@ -483,7 +483,7 @@ import { Component } from '@angular/core';
 export class PetListComponent {
     pageTitle: string = "Pet List";
     pets: Array<Pet> = [
-        new Pet("1","Perro",4,"Grande", new Date(),20,"Golden Retriever", "")
+        new Pet("1","Perro",4,"Grande", new Date(),20,"Golden Retriever", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Golden_Retriever_with_tennis_ball.jpg/1200px-Golden_Retriever_with_tennis_ball.jpg")
     ];
 }
 
