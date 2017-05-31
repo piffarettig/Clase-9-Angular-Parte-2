@@ -28,8 +28,8 @@
                 <thead>
                     <tr>
                         <th>
-                            <button class='btn btn-primary'>
-                                Show Image
+                            <button (click)='toggleImage()'class='btn btn-primary'>
+                                {{showImage ? 'Hide' : 'Show'}} Image
                             </button>
                         </th>
                         <th>Id</th>
@@ -45,7 +45,8 @@
                 <tbody>
                     <tr *ngFor='let aPet of pets'  >
                         <td>
-                            <img [src]='aPet.imageUrl'
+                            <img *ngIf='showImage'
+                                [src]='aPet.imageUrl'
                                 [title]='aPet.name'
                                 [style.width.px]='imageWidth'
                                 [style.margin.px]='imageMargin'/>
