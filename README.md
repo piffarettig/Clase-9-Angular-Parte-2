@@ -608,7 +608,7 @@ Two-Way Binding es simplemente un mecanismo a partir del cual podemos establecer
 
 ### 7. Usando Pipes en Angular
 
-Cuando los datos no están en el formato apropiado antes de querer mostrarlos, usamos Pipes. Angular ya provee varios Pipes built-in para diferentes tipos de datos (date,number,decimal,json, etc), e incluso permite crear uno propio para manejar el filtrado. Esto lo haremos en la próxima clase.
+Cuando los datos no están en el formato apropiado antes de querer mostrarlos, usamos Pipes. Angular ya provee varios Pipes built-in para diferentes tipos de datos (date,number,decimal,json, etc), e incluso permite crear pipes propios para realizar lógica particular como lo es manejar el filtrado. Esto lo haremos en la próxima clase.
 
 Los pipes en general se denotan con el caracter ```|``` (pipe), expresion.
 
