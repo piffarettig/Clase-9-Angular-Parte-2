@@ -1,4 +1,4 @@
-# Angular: Avanzando con la tecnología
+# Angular: Componentes, Bootrstrapping, Directivas, Data Binding
 
 ## Para correr el proyecto:
 
