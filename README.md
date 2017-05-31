@@ -1,4 +1,4 @@
-# Angular: Componentes, Bootrstrapping, Directivas, Data Binding
+# Angular: Componentes, Bootstrapping, Directivas, Data Binding
 
 ## Para correr el proyecto:
 
