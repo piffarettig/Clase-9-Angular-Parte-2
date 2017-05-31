@@ -700,9 +700,11 @@ Y en el template hacemos estos dos cambios:
 
 1) En cada click al botón que tenemos en el header de la tabla, llamamos a la función ```toggleImage()```:
 
+```html
 <button (click)='toggleImage()'class='btn btn-primary'>
   {{showImage ? 'Hide' : 'Show'}} Image
 </button>
+```
 
 2) En el mostrado de la imagen, agregamos la condición de que solo se muestre si la property lo indica.
 
